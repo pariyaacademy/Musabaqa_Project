@@ -152,3 +152,25 @@ Every admin/judge added after that can go through the UI.
   — unlike the Qur'an text itself, this is ordinary UI copy and low-risk to
   fix later, but worth flagging honestly rather than presenting it as
   verified.
+
+## Database schema (`supabase/migrations/`)
+
+`00000000000000_complete_schema.sql` reproduces the **entire** database
+from scratch — 23 tables, 66 RLS policies, 7 internal helper functions,
+8 enums, all grants, the participant-code trigger, and every bug fix
+found during live deployment. Verified to match the live database
+object-for-object.
+
+Run it on a fresh Supabase project, then:
+1. Add `musabaqa` to Settings → API → Exposed schemas (dashboard-only;
+   SQL can't set it), and expose its tables.
+2. Import the Qur'an data (`scripts/import-quran.ts`) — deliberately NOT
+   in the SQL file, since Qur'anic text must come from the authoritative
+   Tanzil source.
+3. Create your first super_admin (instructions at the bottom of the file).
+
+The file's NOTES section documents the non-obvious failure modes hit
+during this deployment — wrong `SUPABASE_URL` format, missing grants,
+RLS recursion, schema moves not rewriting function bodies, and DRAFT
+competitions being invisible publicly. Worth reading before touching the
+schema.

@@ -4,6 +4,7 @@ import { getServerClient } from "@/lib/supabase/server";
 import NewCategoryForm from "./NewCategoryForm";
 import ApproveParticipantButtons from "./ApproveParticipantButtons";
 import AddCompetitionAdminForm from "./AddCompetitionAdminForm";
+import StatusControl from "./StatusControl";
 
 export const dynamic = "force-dynamic";
 
@@ -43,7 +44,7 @@ export default async function AdminCompetitionDetailPage({ params }: { params: {
 
   return (
     <div>
-      <p className="text-xs uppercase tracking-wide text-emerald">{competition.status}</p>
+      <StatusControl competitionId={competition.id} currentStatus={competition.status} />
       <h1 className="mt-2 font-display text-3xl text-ink">{competition.name}</h1>
 
       <div className="star-divider my-8" />
