@@ -65,17 +65,17 @@ export default async function SchedulePage({ params }: { params: { id: string } 
 
   return (
     <div>
-      <h1 className="font-display text-3xl text-ink">Schedule — {competition.name}</h1>
+      <h1 className="font-display text-3xl text-ink dark:text-dark-ink">Schedule — {competition.name}</h1>
 
       {sessions.length === 0 ? (
-        <p className="mt-8 text-ink/60">No sessions created yet.</p>
+        <p className="mt-8 text-ink-soft dark:text-dark-ink/60">No sessions created yet.</p>
       ) : (
         orderedKeys.map((key) => (
           <div key={key} className="mt-10">
-            <h2 className="font-display text-xl text-ink">{key}</h2>
-            <table className="mt-4 w-full border-t border-hairline text-sm">
+            <h2 className="font-display text-xl text-ink dark:text-dark-ink">{key}</h2>
+            <table className="mt-4 w-full border-t border-hairline dark:border-dark-hairline text-sm">
               <thead>
-                <tr className="border-b border-hairline text-left text-ink/60">
+                <tr className="border-b border-hairline dark:border-dark-hairline text-left text-ink-soft dark:text-dark-ink/60">
                   <th className="py-2 font-normal">Time</th>
                   <th className="py-2 font-normal">Participant</th>
                   <th className="py-2 font-normal">Category</th>
@@ -86,18 +86,18 @@ export default async function SchedulePage({ params }: { params: { id: string } 
               </thead>
               <tbody>
                 {groups.get(key)!.map((s) => (
-                  <tr key={s.id} className="border-b border-hairline">
+                  <tr key={s.id} className="border-b border-hairline dark:border-dark-hairline">
                     <td className="py-3 tabnum">{timeLabel(s.scheduled_time)}</td>
-                    <td className="py-3 text-ink">
+                    <td className="py-3 text-ink dark:text-dark-ink">
                       {s.participants?.full_name}
-                      <span className="ml-2 tabnum text-xs text-ink/50">{s.participants?.participant_code}</span>
+                      <span className="ml-2 tabnum text-xs text-ink-soft dark:text-dark-ink/50">{s.participants?.participant_code}</span>
                     </td>
-                    <td className="py-3 text-ink/70">{s.competition_categories?.category_name}</td>
-                    <td className="py-3 text-ink/70">{s.room ?? "—"}</td>
-                    <td className="py-3 text-ink/70">
+                    <td className="py-3 text-ink-soft dark:text-dark-ink/70">{s.competition_categories?.category_name}</td>
+                    <td className="py-3 text-ink-soft dark:text-dark-ink/70">{s.room ?? "—"}</td>
+                    <td className="py-3 text-ink-soft dark:text-dark-ink/70">
                       {s.session_judges.map((sj) => sj.judges?.full_name).filter(Boolean).join(", ") || "—"}
                     </td>
-                    <td className="py-3 text-xs uppercase tracking-wide text-ink/50">{s.status}</td>
+                    <td className="py-3 text-xs uppercase tracking-wide text-ink-soft dark:text-dark-ink/50">{s.status}</td>
                   </tr>
                 ))}
               </tbody>

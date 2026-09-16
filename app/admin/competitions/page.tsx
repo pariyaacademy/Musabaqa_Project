@@ -18,7 +18,7 @@ export default async function AdminCompetitionsPage() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="font-display text-3xl text-ink">Competitions</h1>
+        <h1 className="font-display text-3xl text-ink dark:text-dark-ink">Competitions</h1>
       </div>
 
       <div className="mt-8">
@@ -28,18 +28,18 @@ export default async function AdminCompetitionsPage() {
       <div className="star-divider my-8" />
 
       {!competitions || competitions.length === 0 ? (
-        <p className="text-ink/60">No competitions yet.</p>
+        <p className="text-ink-soft dark:text-dark-ink/60">No competitions yet.</p>
       ) : (
-        <ul className="divide-y divide-hairline border-t border-hairline">
+        <ul className="divide-y divide-hairline dark:divide-dark-hairline border-t border-hairline dark:border-dark-hairline">
           {competitions.map((c) => (
             <li key={c.id} className="flex items-center justify-between py-4">
               <div>
-                <Link href={`/admin/competitions/${c.id}`} className="font-display text-lg text-ink hover:text-emerald">
+                <Link href={`/admin/competitions/${c.id}`} className="font-display text-lg text-ink dark:text-dark-ink hover:text-forest dark:text-forest-light">
                   {c.name}
                 </Link>
-                <p className="text-sm text-ink/60">{[c.city, c.country].filter(Boolean).join(", ")}</p>
+                <p className="text-sm text-ink-soft dark:text-dark-ink/60">{[c.city, c.country].filter(Boolean).join(", ")}</p>
               </div>
-              <span className="text-xs uppercase tracking-wide text-ink/50">{c.status}</span>
+              <span className="text-xs uppercase tracking-wide text-ink-soft dark:text-dark-ink/50">{c.status}</span>
             </li>
           ))}
         </ul>

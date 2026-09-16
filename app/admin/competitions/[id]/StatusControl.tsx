@@ -43,7 +43,7 @@ export default function StatusControl({ competitionId, currentStatus }: { compet
         value={status}
         onChange={(e) => handleChange(e.target.value)}
         disabled={loading}
-        className="border border-hairline bg-ivory px-3 py-1.5 text-xs uppercase tracking-wide text-emerald disabled:opacity-50"
+        className="border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-1.5 text-xs uppercase tracking-wide text-forest dark:text-forest-light disabled:opacity-50"
       >
         {STATUSES.map((s) => (
           <option key={s} value={s}>

@@ -83,14 +83,14 @@ export default function ScoreForm({ sessionId, criteria, existingScores }: Props
         const existing = existingByCriterion.get(c.id);
         const locked = existing?.locked ?? false;
         return (
-          <div key={c.id} className="border border-hairline p-4">
+          <div key={c.id} className="border border-hairline dark:border-dark-hairline p-4">
             <div className="flex items-baseline justify-between">
-              <p className="font-display text-lg text-ink">{c.criterion_name}</p>
-              <p className="text-xs text-ink/50">max {c.max_score}</p>
+              <p className="font-display text-lg text-ink dark:text-dark-ink">{c.criterion_name}</p>
+              <p className="text-xs text-ink-soft dark:text-dark-ink/50">max {c.max_score}</p>
             </div>
             <div className="mt-3 flex gap-4">
               <div className="flex-1">
-                <label className="block text-xs text-ink/60">Raw score</label>
+                <label className="block text-xs text-ink-soft dark:text-dark-ink/60">Raw score</label>
                 <input
                   type="number"
                   min={0}
@@ -98,18 +98,18 @@ export default function ScoreForm({ sessionId, criteria, existingScores }: Props
                   disabled={locked}
                   value={values[c.id]?.rawScore ?? ""}
                   onChange={(e) => setValues((prev) => ({ ...prev, [c.id]: { ...prev[c.id], rawScore: e.target.value } }))}
-                  className="mt-1 w-full border border-hairline bg-ivory px-3 py-2 tabnum focus:border-emerald focus:outline-none disabled:opacity-50"
+                  className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2 tabnum focus:border-forest focus:outline-none disabled:opacity-50"
                 />
               </div>
               <div className="flex-1">
-                <label className="block text-xs text-ink/60">Deductions</label>
+                <label className="block text-xs text-ink-soft dark:text-dark-ink/60">Deductions</label>
                 <input
                   type="number"
                   min={0}
                   disabled={locked}
                   value={values[c.id]?.deductions ?? "0"}
                   onChange={(e) => setValues((prev) => ({ ...prev, [c.id]: { ...prev[c.id], deductions: e.target.value } }))}
-                  className="mt-1 w-full border border-hairline bg-ivory px-3 py-2 tabnum focus:border-emerald focus:outline-none disabled:opacity-50"
+                  className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2 tabnum focus:border-forest focus:outline-none disabled:opacity-50"
                 />
               </div>
             </div>
@@ -118,13 +118,13 @@ export default function ScoreForm({ sessionId, criteria, existingScores }: Props
               disabled={locked}
               value={values[c.id]?.comments ?? ""}
               onChange={(e) => setValues((prev) => ({ ...prev, [c.id]: { ...prev[c.id], comments: e.target.value } }))}
-              className="mt-3 w-full border border-hairline bg-ivory px-3 py-2 text-sm focus:border-emerald focus:outline-none disabled:opacity-50"
+              className="mt-3 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2 text-sm focus:border-forest focus:outline-none disabled:opacity-50"
               rows={2}
             />
             <button
               onClick={() => saveCriterion(c.id)}
               disabled={locked || savingId === c.id || !values[c.id]?.rawScore}
-              className="mt-3 border border-emerald px-4 py-1.5 text-sm text-emerald hover:bg-emerald hover:text-ivory disabled:opacity-50"
+              className="mt-3 border border-forest px-4 py-1.5 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white disabled:opacity-50"
             >
               {savingId === c.id ? "Saving…" : locked ? "Locked" : "Save"}
             </button>
@@ -132,16 +132,16 @@ export default function ScoreForm({ sessionId, criteria, existingScores }: Props
         );
       })}
 
-      {message && <p className="text-sm text-ink/70">{message}</p>}
+      {message && <p className="text-sm text-ink-soft dark:text-dark-ink/70">{message}</p>}
 
       <button
         onClick={lockAll}
         disabled={anyLocked}
-        className="border border-brick px-5 py-2.5 text-sm text-brick hover:bg-brick hover:text-ivory disabled:opacity-40"
+        className="border border-brick px-5 py-2.5 text-sm text-brick hover:bg-brick hover:text-white disabled:opacity-40"
       >
         {anyLocked ? "Scores locked" : "Lock my scores for this session"}
       </button>
-      <p className="text-xs text-ink/50">
+      <p className="text-xs text-ink-soft dark:text-dark-ink/50">
         Locking prevents further edits by you. Corrections after locking require an admin.
       </p>
     </div>

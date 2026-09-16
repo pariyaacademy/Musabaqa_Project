@@ -24,7 +24,7 @@ export function AggregateButton({ sessionId }: { sessionId: string }) {
     router.refresh();
   }
   return (
-    <button onClick={run} disabled={loading} className="border border-emerald px-3 py-1.5 text-xs text-emerald hover:bg-emerald hover:text-ivory disabled:opacity-50">
+    <button onClick={run} disabled={loading} className="border border-forest px-3 py-1.5 text-xs text-forest dark:text-forest-light hover:bg-forest hover:text-white disabled:opacity-50">
       {loading ? "…" : "Aggregate"}
     </button>
   );
@@ -41,7 +41,7 @@ export function RankCategoryButton({ categoryId }: { categoryId: string }) {
     router.refresh();
   }
   return (
-    <button onClick={run} disabled={loading} className="border border-emerald px-4 py-2 text-sm text-emerald hover:bg-emerald hover:text-ivory disabled:opacity-50">
+    <button onClick={run} disabled={loading} className="border border-forest px-4 py-2 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white disabled:opacity-50">
       {loading ? "Ranking…" : "Rank category"}
     </button>
   );
@@ -58,7 +58,7 @@ export function PublishButton({ resultId }: { resultId: string }) {
     router.refresh();
   }
   return (
-    <button onClick={run} disabled={loading} className="border border-gold px-3 py-1.5 text-xs text-gold hover:bg-gold hover:text-ivory disabled:opacity-50">
+    <button onClick={run} disabled={loading} className="border border-gold px-3 py-1.5 text-xs text-gold hover:bg-gold hover:text-white disabled:opacity-50">
       {loading ? "…" : "Publish"}
     </button>
   );
@@ -90,14 +90,14 @@ export function GenerateCertificateButton({ resultId, existingCode }: { resultId
         href={`/api/certificates/${encodeURIComponent(code)}/pdf`}
         target="_blank"
         rel="noreferrer"
-        className="tabnum text-xs text-emerald underline"
+        className="tabnum text-xs text-forest dark:text-forest-light underline"
       >
         {code} (PDF)
       </a>
     );
   }
   return (
-    <button onClick={run} disabled={loading} className="border border-ink/30 px-3 py-1.5 text-xs text-ink/70 hover:border-ink hover:text-ink disabled:opacity-50">
+    <button onClick={run} disabled={loading} className="border border-hairline dark:border-dark-hairline px-3 py-1.5 text-xs text-ink-soft dark:text-dark-ink/70 hover:border-ink hover:text-ink dark:text-dark-ink disabled:opacity-50">
       {loading ? "…" : "Generate certificate"}
     </button>
   );

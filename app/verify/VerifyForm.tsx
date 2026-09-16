@@ -29,30 +29,30 @@ export default function VerifyForm({ t }: { t: Dictionary["verify"] }) {
 
   return (
     <div className="max-w-md">
-      <h1 className="font-display text-3xl text-ink">{t.heading}</h1>
-      <p className="mt-3 text-ink/60">{t.intro}</p>
+      <h1 className="font-display text-3xl text-ink dark:text-dark-ink">{t.heading}</h1>
+      <p className="mt-3 text-ink-soft dark:text-dark-ink/60">{t.intro}</p>
 
       <form onSubmit={handleSubmit} className="mt-8 flex gap-3">
         <input
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder={t.placeholder}
-          className="flex-1 border border-hairline bg-ivory px-3 py-2 focus:border-emerald focus:outline-none"
+          className="flex-1 border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2 focus:border-forest focus:outline-none"
         />
         <button
           type="submit"
           disabled={status === "checking"}
-          className="border border-emerald bg-emerald px-5 py-2.5 text-sm text-ivory hover:bg-emerald-dark disabled:opacity-50"
+          className="border border-forest bg-forest px-5 py-2.5 text-sm text-white hover:bg-forest-dark disabled:opacity-50"
         >
           {t.verifyButton}
         </button>
       </form>
 
       {status === "done" && result && (
-        <div className="mt-8 border border-hairline p-6">
+        <div className="mt-8 border border-hairline dark:border-dark-hairline p-6">
           {result.valid ? (
             <>
-              <p className="text-sm uppercase tracking-wide text-emerald">{t.validCertificate}</p>
+              <p className="text-sm uppercase tracking-wide text-forest dark:text-forest-light">{t.validCertificate}</p>
               <dl className="mt-4 space-y-2 text-sm">
                 <Row label={t.participant} value={result.participantName} />
                 <Row label={t.competition} value={result.competitionName} />
@@ -64,7 +64,7 @@ export default function VerifyForm({ t }: { t: Dictionary["verify"] }) {
                 href={`/api/certificates/${encodeURIComponent(code.trim())}/pdf`}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-block border border-emerald px-4 py-2 text-sm text-emerald hover:bg-emerald hover:text-ivory"
+                className="mt-5 inline-block border border-forest px-4 py-2 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white"
               >
                 {t.downloadPdf}
               </a>
@@ -80,9 +80,9 @@ export default function VerifyForm({ t }: { t: Dictionary["verify"] }) {
 
 function Row({ label, value }: { label: string; value?: string }) {
   return (
-    <div className="flex justify-between border-b border-hairline pb-2">
-      <dt className="text-ink/60">{label}</dt>
-      <dd className="text-ink">{value ?? "—"}</dd>
+    <div className="flex justify-between border-b border-hairline dark:border-dark-hairline pb-2">
+      <dt className="text-ink-soft dark:text-dark-ink/60">{label}</dt>
+      <dd className="text-ink dark:text-dark-ink">{value ?? "—"}</dd>
     </div>
   );
 }

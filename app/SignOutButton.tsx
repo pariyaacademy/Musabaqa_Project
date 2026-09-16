@@ -12,7 +12,7 @@ export default function SignOutButton({ label = "Sign out" }: { label?: string }
     router.refresh();
   }
   return (
-    <button onClick={handleSignOut} className="hover:text-emerald">
+    <button onClick={handleSignOut} className="hover:text-forest dark:text-forest-light">
       {label}
     </button>
   );

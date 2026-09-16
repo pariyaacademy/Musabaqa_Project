@@ -80,25 +80,25 @@ export default async function JudgeSessionPage({ params }: { params: { sessionId
 
   return (
     <div>
-      <p className="text-xs uppercase tracking-wide text-emerald">{category?.category_name}</p>
-      <h1 className="mt-2 font-display text-3xl text-ink">{participant?.full_name}</h1>
-      <p className="mt-1 tabnum text-ink/60">{participant?.participant_code}</p>
+      <p className="text-xs uppercase tracking-wide text-forest dark:text-forest-light">{category?.category_name}</p>
+      <h1 className="mt-2 font-display text-3xl text-ink dark:text-dark-ink">{participant?.full_name}</h1>
+      <p className="mt-1 tabnum text-ink-soft dark:text-dark-ink/60">{participant?.participant_code}</p>
 
       <div className="star-divider my-8" />
 
-      <h2 className="font-display text-xl text-ink">Questions</h2>
+      <h2 className="font-display text-xl text-ink dark:text-dark-ink">Questions</h2>
       {questions.length === 0 ? (
-        <p className="mt-3 text-sm text-ink/60">No questions have been assigned to this session yet.</p>
+        <p className="mt-3 text-sm text-ink-soft dark:text-dark-ink/60">No questions have been assigned to this session yet.</p>
       ) : (
         <ol className="mt-4 space-y-3">
           {questions.map((q) => (
-            <li key={q.order} className="border border-hairline p-4">
-              <p className="text-xs uppercase tracking-wide text-ink/50">
+            <li key={q.order} className="border border-hairline dark:border-dark-hairline p-4">
+              <p className="text-xs uppercase tracking-wide text-ink-soft dark:text-dark-ink/50">
                 Question {q.order} · {q.question_type?.replace(/_/g, " ")}
                 {q.difficulty ? ` · ${q.difficulty}` : ""}
               </p>
-              <p className="mt-1 tabnum text-ink">{q.start_verse_key}</p>
-              {q.ayahText && <p dir="rtl" className="mt-2 font-arabic text-xl leading-loose text-ink">{q.ayahText}</p>}
+              <p className="mt-1 tabnum text-ink dark:text-dark-ink">{q.start_verse_key}</p>
+              {q.ayahText && <p dir="rtl" className="mt-2 font-arabic text-xl leading-loose text-ink dark:text-dark-ink">{q.ayahText}</p>}
             </li>
           ))}
         </ol>
@@ -106,9 +106,9 @@ export default async function JudgeSessionPage({ params }: { params: { sessionId
 
       <div className="star-divider my-8" />
 
-      <h2 className="font-display text-xl text-ink">Scoring</h2>
+      <h2 className="font-display text-xl text-ink dark:text-dark-ink">Scoring</h2>
       {criteria.length === 0 ? (
-        <p className="mt-3 text-sm text-ink/60">No scoring criteria configured for this category yet.</p>
+        <p className="mt-3 text-sm text-ink-soft dark:text-dark-ink/60">No scoring criteria configured for this category yet.</p>
       ) : (
         <ScoreForm sessionId={session.id} criteria={criteria} existingScores={existingScores} />
       )}

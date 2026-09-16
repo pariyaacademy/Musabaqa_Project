@@ -18,11 +18,11 @@ export default function LanguageSwitcher({ current }: { current: Locale }) {
   }
 
   return (
-    <div className="flex items-center gap-1 text-xs text-ink/50">
+    <div className="flex items-center gap-1 text-xs text-ink-soft dark:text-dark-ink/50">
       <button
         onClick={() => change("en")}
         disabled={isPending}
-        className={current === "en" ? "font-medium text-emerald" : "hover:text-ink"}
+        className={current === "en" ? "font-medium text-forest dark:text-forest-light" : "hover:text-ink dark:text-dark-ink"}
       >
         EN
       </button>
@@ -30,7 +30,7 @@ export default function LanguageSwitcher({ current }: { current: Locale }) {
       <button
         onClick={() => change("ha")}
         disabled={isPending}
-        className={current === "ha" ? "font-medium text-emerald" : "hover:text-ink"}
+        className={current === "ha" ? "font-medium text-forest dark:text-forest-light" : "hover:text-ink dark:text-dark-ink"}
       >
         HA
       </button>

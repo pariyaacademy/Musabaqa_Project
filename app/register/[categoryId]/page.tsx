@@ -27,11 +27,11 @@ export default async function RegisterPage({ params }: { params: { categoryId: s
 
   return (
     <div>
-      <p className="text-xs uppercase tracking-wide text-emerald">{competition?.name}</p>
-      <h1 className="mt-2 font-display text-3xl text-ink">
+      <p className="text-xs uppercase tracking-wide text-forest dark:text-forest-light">{competition?.name}</p>
+      <h1 className="mt-2 font-display text-3xl text-ink dark:text-dark-ink">
         {t.register.heading} — {category.category_name}
       </h1>
-      <p className="mt-4 max-w-md text-ink/60">{t.register.intro}</p>
+      <p className="mt-4 max-w-md text-ink-soft dark:text-dark-ink/60">{t.register.intro}</p>
       <div className="mt-8">
         <RegisterForm
           competitionId={category.competition_id}

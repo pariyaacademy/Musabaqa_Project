@@ -4,28 +4,51 @@
 
 @layer base {
   body {
-    @apply bg-ivory text-ink font-sans antialiased;
+    @apply bg-surface text-ink font-sans antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
-  h1,
-  h2,
-  h3 {
+  .dark body {
+    @apply bg-dark-surface text-dark-ink;
+  }
+  h1, h2, h3 {
     @apply font-display;
   }
-  /* Tabular numerals everywhere a score or position appears. */
   .tabnum {
     font-variant-numeric: tabular-nums;
   }
 }
 
-/*
-  A single, restrained eight-point-star (rub el hizb) motif, used once as a
-  section divider — never tiled as a repeating background. Rendered as a
-  thin inline SVG data URI so it needs no extra asset or network request.
-*/
+@layer components {
+  /* Reusable surface/border tokens so every page picks up dark mode
+     without each component hand-writing dark: variants everywhere. */
+  .card {
+    @apply border border-hairline bg-surface dark:border-dark-hairline dark:bg-dark-surface-alt;
+  }
+  .rule {
+    @apply border-hairline dark:border-dark-hairline;
+  }
+  .muted {
+    @apply text-ink-soft dark:text-dark-ink/60;
+  }
+  .btn-primary {
+    @apply border border-forest bg-forest px-5 py-2.5 text-sm text-white transition-colors hover:bg-forest-dark disabled:opacity-50;
+  }
+  .btn-outline {
+    @apply border border-forest px-4 py-2 text-sm text-forest transition-colors hover:bg-forest hover:text-white dark:text-forest-light dark:hover:text-white;
+  }
+  .field {
+    @apply mt-1 w-full border border-hairline bg-surface px-3 py-2 text-ink focus:border-forest focus:outline-none dark:border-dark-hairline dark:bg-dark-surface-alt dark:text-dark-ink;
+  }
+}
+
+/* Single restrained eight-point-star divider — never tiled as wallpaper. */
 .star-divider {
   height: 1px;
-  background-image: linear-gradient(to right, transparent, #dbd0b8 20%, #dbd0b8 80%, transparent);
+  background-image: linear-gradient(to right, transparent, #dce5e1 20%, #dce5e1 80%, transparent);
   position: relative;
+}
+.dark .star-divider {
+  background-image: linear-gradient(to right, transparent, #1e3830 20%, #1e3830 80%, transparent);
 }
 .star-divider::before {
   content: "";
@@ -34,9 +57,12 @@
   top: 50%;
   width: 18px;
   height: 18px;
-  transform: translate(-50%, -50%) rotate(0deg);
-  background-color: #fbf7ee;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l2.6 6.7L21 9l-6.4 2.3L12 18l-2.6-6.7L3 9l6.4-2.3z' fill='none' stroke='%23B08D57' stroke-width='1'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
+}
+.dark .star-divider::before {
+  background-color: #0a1714;
 }

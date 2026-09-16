@@ -25,21 +25,21 @@ export default function ScoreboardPage({ params }: { params: { categoryId: strin
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="font-display text-3xl text-ink">Live scoreboard</h1>
-        <span className="flex items-center gap-2 text-xs uppercase tracking-wide text-emerald">
-          <span className="h-2 w-2 rounded-full bg-emerald" />
+        <h1 className="font-display text-3xl text-ink dark:text-dark-ink">Live scoreboard</h1>
+        <span className="flex items-center gap-2 text-xs uppercase tracking-wide text-forest dark:text-forest-light">
+          <span className="h-2 w-2 rounded-full bg-forest" />
           Live
         </span>
       </div>
 
       {loading ? (
-        <p className="mt-8 text-ink/60">Loading…</p>
+        <p className="mt-8 text-ink-soft dark:text-dark-ink/60">Loading…</p>
       ) : rows.length === 0 ? (
-        <p className="mt-8 text-ink/60">No scores are visible for this category yet.</p>
+        <p className="mt-8 text-ink-soft dark:text-dark-ink/60">No scores are visible for this category yet.</p>
       ) : (
-        <table className="mt-8 w-full border-t border-hairline text-sm">
+        <table className="mt-8 w-full border-t border-hairline dark:border-dark-hairline text-sm">
           <thead>
-            <tr className="border-b border-hairline text-left text-ink/60">
+            <tr className="border-b border-hairline dark:border-dark-hairline text-left text-ink-soft dark:text-dark-ink/60">
               <th className="py-3 font-normal">Position</th>
               <th className="py-3 font-normal">Participant</th>
               <th className="py-3 font-normal">ID</th>
@@ -49,7 +49,7 @@ export default function ScoreboardPage({ params }: { params: { categoryId: strin
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.participantId} className="border-b border-hairline">
+              <tr key={row.participantId} className="border-b border-hairline dark:border-dark-hairline">
                 <td className="py-3 tabnum">
                   {row.position ? (
                     <span className={row.position <= 3 ? "font-medium text-gold" : ""}>{row.position}</span>
@@ -57,10 +57,10 @@ export default function ScoreboardPage({ params }: { params: { categoryId: strin
                     "—"
                   )}
                 </td>
-                <td className="py-3 text-ink">{row.participantName}</td>
-                <td className="py-3 tabnum text-ink/60">{row.participantCode}</td>
-                <td className="py-3 text-right tabnum text-ink">{row.finalScore?.toFixed(2) ?? "—"}</td>
-                <td className="py-3 text-right text-xs uppercase tracking-wide text-ink/50">{row.status}</td>
+                <td className="py-3 text-ink dark:text-dark-ink">{row.participantName}</td>
+                <td className="py-3 tabnum text-ink-soft dark:text-dark-ink/60">{row.participantCode}</td>
+                <td className="py-3 text-right tabnum text-ink dark:text-dark-ink">{row.finalScore?.toFixed(2) ?? "—"}</td>
+                <td className="py-3 text-right text-xs uppercase tracking-wide text-ink-soft dark:text-dark-ink/50">{row.status}</td>
               </tr>
             ))}
           </tbody>

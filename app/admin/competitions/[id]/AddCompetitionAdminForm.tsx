@@ -32,19 +32,19 @@ export default function AddCompetitionAdminForm({ competitionId }: { competition
   return (
     <form onSubmit={handleSubmit} className="flex max-w-md items-end gap-3">
       <div className="flex-1">
-        <label className="block text-xs text-ink/60">Add admin by email</label>
+        <label className="block text-xs text-ink-soft dark:text-dark-ink/60">Add admin by email</label>
         <input
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 w-full border border-hairline bg-ivory px-3 py-2"
+          className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2"
         />
       </div>
-      <button type="submit" disabled={loading} className="border border-emerald bg-emerald px-4 py-2 text-sm text-ivory hover:bg-emerald-dark disabled:opacity-50">
+      <button type="submit" disabled={loading} className="border border-forest bg-forest px-4 py-2 text-sm text-white hover:bg-forest-dark disabled:opacity-50">
         {loading ? "Adding…" : "Add"}
       </button>
-      {message && <p className={`text-xs ${isError ? "text-brick" : "text-emerald"}`}>{message}</p>}
+      {message && <p className={`text-xs ${isError ? "text-brick" : "text-forest dark:text-forest-light"}`}>{message}</p>}
     </form>
   );
 }

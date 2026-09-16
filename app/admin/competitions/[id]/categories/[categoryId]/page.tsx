@@ -67,21 +67,21 @@ export default async function CategoryAdminPage({ params }: { params: { id: stri
 
   return (
     <div>
-      <h1 className="font-display text-3xl text-ink">{category.category_name}</h1>
-      <p className="mt-1 text-ink/60">
+      <h1 className="font-display text-3xl text-ink dark:text-dark-ink">{category.category_name}</h1>
+      <p className="mt-1 text-ink-soft dark:text-dark-ink/60">
         {category.start_juz && category.end_juz ? `Juz ${category.start_juz}–${category.end_juz}` : "No range set"} ·{" "}
         {category.aggregation_method.replace(/_/g, " ").toLowerCase()}
       </p>
 
       <div className="star-divider my-8" />
 
-      <h2 className="font-display text-xl text-ink">Scoring criteria</h2>
+      <h2 className="font-display text-xl text-ink dark:text-dark-ink">Scoring criteria</h2>
       {criteria.length > 0 && (
-        <ul className="mt-4 divide-y divide-hairline border-t border-hairline">
+        <ul className="mt-4 divide-y divide-hairline dark:divide-dark-hairline border-t border-hairline dark:border-dark-hairline">
           {criteria.map((c) => (
             <li key={c.id} className="flex justify-between py-2 text-sm">
-              <span className="text-ink">{c.criterion_name}</span>
-              <span className="tabnum text-ink/60">
+              <span className="text-ink dark:text-dark-ink">{c.criterion_name}</span>
+              <span className="tabnum text-ink-soft dark:text-dark-ink/60">
                 max {c.max_score} · weight {c.weight}
               </span>
             </li>
@@ -94,8 +94,8 @@ export default async function CategoryAdminPage({ params }: { params: { id: stri
 
       <div className="star-divider my-8" />
 
-      <h2 className="font-display text-xl text-ink">Question pool</h2>
-      <p className="mt-2 text-sm text-ink/60">
+      <h2 className="font-display text-xl text-ink dark:text-dark-ink">Question pool</h2>
+      <p className="mt-2 text-sm text-ink-soft dark:text-dark-ink/60">
         {questionPoolSize} active question{questionPoolSize === 1 ? "" : "s"} generated · target {category.number_of_questions} per session
       </p>
       <div className="mt-4">
@@ -105,19 +105,19 @@ export default async function CategoryAdminPage({ params }: { params: { id: stri
       <div className="star-divider my-8" />
 
       <div className="flex items-center justify-between">
-        <h2 className="font-display text-xl text-ink">Sessions</h2>
-        <Link href={`/admin/results/${category.id}`} className="text-sm text-emerald hover:text-ink">
+        <h2 className="font-display text-xl text-ink dark:text-dark-ink">Sessions</h2>
+        <Link href={`/admin/results/${category.id}`} className="text-sm text-forest dark:text-forest-light hover:text-ink dark:text-dark-ink">
           View results →
         </Link>
       </div>
       {sessions.length > 0 && (
-        <ul className="mt-4 divide-y divide-hairline border-t border-hairline">
+        <ul className="mt-4 divide-y divide-hairline dark:divide-dark-hairline border-t border-hairline dark:border-dark-hairline">
           {sessions.map((s) => {
             const p = Array.isArray(s.participants) ? s.participants[0] : s.participants;
             return (
               <li key={s.id} className="flex justify-between py-2 text-sm">
-                <span className="text-ink">{p?.full_name}</span>
-                <span className="text-xs uppercase tracking-wide text-ink/50">{s.status}</span>
+                <span className="text-ink dark:text-dark-ink">{p?.full_name}</span>
+                <span className="text-xs uppercase tracking-wide text-ink-soft dark:text-dark-ink/50">{s.status}</span>
               </li>
             );
           })}

@@ -23,14 +23,14 @@ export default function ApproveParticipantButtons({ participantId }: { participa
       <button
         onClick={() => decide("APPROVED")}
         disabled={loading !== null}
-        className="border border-emerald px-3 py-1.5 text-xs text-emerald hover:bg-emerald hover:text-ivory disabled:opacity-50"
+        className="border border-forest px-3 py-1.5 text-xs text-forest dark:text-forest-light hover:bg-forest hover:text-white disabled:opacity-50"
       >
         {loading === "APPROVED" ? "…" : "Approve"}
       </button>
       <button
         onClick={() => decide("REJECTED")}
         disabled={loading !== null}
-        className="border border-brick px-3 py-1.5 text-xs text-brick hover:bg-brick hover:text-ivory disabled:opacity-50"
+        className="border border-brick px-3 py-1.5 text-xs text-brick hover:bg-brick hover:text-white disabled:opacity-50"
       >
         {loading === "REJECTED" ? "…" : "Reject"}
       </button>

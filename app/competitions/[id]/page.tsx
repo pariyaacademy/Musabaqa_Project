@@ -55,27 +55,27 @@ export default async function CompetitionPage({ params }: { params: { id: string
 
   return (
     <div>
-      <p className="text-xs uppercase tracking-wide text-emerald">
+      <p className="text-xs uppercase tracking-wide text-forest dark:text-forest-light">
         {t.status[competition.status as keyof typeof t.status] ?? competition.status.replace(/_/g, " ")}
       </p>
-      <h1 className="mt-2 font-display text-3xl text-ink">{competition.name}</h1>
-      <p className="mt-1 text-ink/60">
+      <h1 className="mt-2 font-display text-3xl text-ink dark:text-dark-ink">{competition.name}</h1>
+      <p className="mt-1 text-ink-soft dark:text-dark-ink/60">
         {[competition.venue, competition.city, competition.country].filter(Boolean).join(", ")}
       </p>
-      {competition.description && <p className="mt-4 max-w-2xl text-ink/80">{competition.description}</p>}
+      {competition.description && <p className="mt-4 max-w-2xl text-ink dark:text-dark-ink">{competition.description}</p>}
 
       <div className="star-divider my-10" />
 
-      <h2 className="font-display text-2xl text-ink">{t.competition.categories}</h2>
+      <h2 className="font-display text-2xl text-ink dark:text-dark-ink">{t.competition.categories}</h2>
       {categories.length === 0 ? (
-        <p className="mt-4 text-ink/60">{t.competition.noCategoriesYet}</p>
+        <p className="mt-4 text-ink-soft dark:text-dark-ink/60">{t.competition.noCategoriesYet}</p>
       ) : (
-        <ul className="mt-6 divide-y divide-hairline border-t border-hairline">
+        <ul className="mt-6 divide-y divide-hairline dark:divide-dark-hairline border-t border-hairline dark:border-dark-hairline">
           {categories.map((cat) => (
             <li key={cat.id} className="flex items-center justify-between py-4">
               <div>
-                <p className="font-display text-lg text-ink">{cat.category_name}</p>
-                <p className="text-sm text-ink/60">
+                <p className="font-display text-lg text-ink dark:text-dark-ink">{cat.category_name}</p>
+                <p className="text-sm text-ink-soft dark:text-dark-ink/60">
                   {rangeLabel(cat, t)}
                   {cat.duration_minutes ? ` · ${cat.duration_minutes} ${t.competition.minutes}` : ""}
                   {cat.age_min || cat.age_max ? ` · ${t.competition.ageRange} ${cat.age_min ?? "—"}–${cat.age_max ?? "—"}` : ""}
@@ -87,12 +87,12 @@ export default async function CompetitionPage({ params }: { params: { id: string
               {cat.status === "ACTIVE" ? (
                 <Link
                   href={`/register/${cat.id}`}
-                  className="border border-emerald px-4 py-2 text-sm text-emerald hover:bg-emerald hover:text-ivory"
+                  className="border border-forest px-4 py-2 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white"
                 >
                   {t.competition.register}
                 </Link>
               ) : (
-                <span className="text-xs uppercase tracking-wide text-ink/40">{t.competition.closed}</span>
+                <span className="text-xs uppercase tracking-wide text-ink-soft dark:text-dark-ink/40">{t.competition.closed}</span>
               )}
             </li>
           ))}
@@ -102,8 +102,8 @@ export default async function CompetitionPage({ params }: { params: { id: string
       {competition.rules && (
         <>
           <div className="star-divider my-10" />
-          <h2 className="font-display text-2xl text-ink">{t.competition.rules}</h2>
-          <p className="mt-4 max-w-2xl whitespace-pre-line text-ink/80">{competition.rules}</p>
+          <h2 className="font-display text-2xl text-ink dark:text-dark-ink">{t.competition.rules}</h2>
+          <p className="mt-4 max-w-2xl whitespace-pre-line text-ink dark:text-dark-ink">{competition.rules}</p>
         </>
       )}
     </div>

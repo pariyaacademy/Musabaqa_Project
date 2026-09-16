@@ -43,25 +43,25 @@ export default async function AdminDashboard() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="font-display text-3xl text-ink">Admin dashboard</h1>
+        <h1 className="font-display text-3xl text-ink dark:text-dark-ink">Admin dashboard</h1>
         <div className="flex gap-3">
-          <Link href="/admin/competitions" className="border border-emerald px-4 py-2 text-sm text-emerald hover:bg-emerald hover:text-ivory">
+          <Link href="/admin/competitions" className="border border-forest px-4 py-2 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white">
             Manage competitions
           </Link>
-          <Link href="/admin/judges" className="border border-emerald px-4 py-2 text-sm text-emerald hover:bg-emerald hover:text-ivory">
+          <Link href="/admin/judges" className="border border-forest px-4 py-2 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white">
             Manage judges
           </Link>
-          <Link href="/admin/roles" className="border border-emerald px-4 py-2 text-sm text-emerald hover:bg-emerald hover:text-ivory">
+          <Link href="/admin/roles" className="border border-forest px-4 py-2 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white">
             User roles
           </Link>
         </div>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 gap-px border border-hairline bg-hairline md:grid-cols-3">
+      <div className="mt-10 grid grid-cols-2 gap-px border border-hairline dark:border-dark-hairline bg-hairline md:grid-cols-3">
         {cards.map((c) => (
-          <div key={c.label} className="bg-ivory p-6">
-            <p className="font-display text-3xl tabnum text-ink">{c.value}</p>
-            <p className="mt-1 text-sm text-ink/60">{c.label}</p>
+          <div key={c.label} className="bg-surface dark:bg-dark-surface-alt p-6">
+            <p className="font-display text-3xl tabnum text-ink dark:text-dark-ink">{c.value}</p>
+            <p className="mt-1 text-sm text-ink-soft dark:text-dark-ink/60">{c.label}</p>
           </div>
         ))}
       </div>

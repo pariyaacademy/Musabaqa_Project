@@ -60,13 +60,13 @@ export default function RegisterForm({ competitionId, categoryId, categoryName, 
 
   if (status === "done") {
     return (
-      <div className="border border-emerald p-6">
-        <p className="text-sm uppercase tracking-wide text-emerald">{t.registeredHeading}</p>
-        <p className="mt-2 text-ink/80">
+      <div className="border border-forest p-6">
+        <p className="text-sm uppercase tracking-wide text-forest dark:text-forest-light">{t.registeredHeading}</p>
+        <p className="mt-2 text-ink dark:text-dark-ink">
           {t.registeredBody} <strong>{categoryName}</strong>.
         </p>
-        <p className="mt-3 font-display text-2xl tabnum text-ink">{participantCode}</p>
-        <p className="mt-3 text-sm text-ink/60">{t.participantIdNote}</p>
+        <p className="mt-3 font-display text-2xl tabnum text-ink dark:text-dark-ink">{participantCode}</p>
+        <p className="mt-3 text-sm text-ink-soft dark:text-dark-ink/60">{t.participantIdNote}</p>
       </div>
     );
   }
@@ -77,8 +77,8 @@ export default function RegisterForm({ competitionId, categoryId, categoryName, 
       {requiresAge && <Field label={t.dateOfBirth} name="dateOfBirth" type="date" required />}
       {requiresGender && (
         <div>
-          <label className="block text-sm text-ink/70">{t.gender}</label>
-          <select name="gender" required className="mt-1 w-full border border-hairline bg-ivory px-3 py-2">
+          <label className="block text-sm text-ink-soft dark:text-dark-ink/70">{t.gender}</label>
+          <select name="gender" required className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2">
             <option value="">{t.selectGender}</option>
             <option value="Male">{t.male}</option>
             <option value="Female">{t.female}</option>
@@ -98,7 +98,7 @@ export default function RegisterForm({ competitionId, categoryId, categoryName, 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="border border-emerald bg-emerald px-5 py-2.5 text-sm text-ivory hover:bg-emerald-dark disabled:opacity-50"
+        className="border border-forest bg-forest px-5 py-2.5 text-sm text-white hover:bg-forest-dark disabled:opacity-50"
       >
         {status === "submitting" ? t.submitting : t.submit}
       </button>
@@ -119,12 +119,12 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-sm text-ink/70">{label}</label>
+      <label className="block text-sm text-ink-soft dark:text-dark-ink/70">{label}</label>
       <input
         name={name}
         type={type}
         required={required}
-        className="mt-1 w-full border border-hairline bg-ivory px-3 py-2 focus:border-emerald focus:outline-none"
+        className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2 focus:border-forest focus:outline-none"
       />
     </div>
   );

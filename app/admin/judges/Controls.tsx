@@ -36,41 +36,41 @@ export function NewJudgeForm() {
 
   if (!open) {
     return (
-      <button onClick={() => setOpen(true)} className="border border-emerald px-4 py-2 text-sm text-emerald hover:bg-emerald hover:text-ivory">
+      <button onClick={() => setOpen(true)} className="border border-forest px-4 py-2 text-sm text-forest dark:text-forest-light hover:bg-forest hover:text-white">
         New judge
       </button>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md space-y-4 border border-hairline p-5">
+    <form onSubmit={handleSubmit} className="max-w-md space-y-4 border border-hairline dark:border-dark-hairline p-5">
       <div>
-        <label className="block text-sm text-ink/70">Full name</label>
-        <input name="fullName" required className="mt-1 w-full border border-hairline bg-ivory px-3 py-2" />
+        <label className="block text-sm text-ink-soft dark:text-dark-ink/70">Full name</label>
+        <input name="fullName" required className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2" />
       </div>
       <div>
-        <label className="block text-sm text-ink/70">Specialization</label>
-        <input name="specialization" placeholder="e.g. Tajweed, 30 Juz Hafiz" className="mt-1 w-full border border-hairline bg-ivory px-3 py-2" />
+        <label className="block text-sm text-ink-soft dark:text-dark-ink/70">Specialization</label>
+        <input name="specialization" placeholder="e.g. Tajweed, 30 Juz Hafiz" className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2" />
       </div>
       <div className="flex gap-3">
         <div className="flex-1">
-          <label className="block text-sm text-ink/70">Phone</label>
-          <input name="phone" className="mt-1 w-full border border-hairline bg-ivory px-3 py-2" />
+          <label className="block text-sm text-ink-soft dark:text-dark-ink/70">Phone</label>
+          <input name="phone" className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2" />
         </div>
         <div className="flex-1">
-          <label className="block text-sm text-ink/70">Email</label>
-          <input name="email" type="email" className="mt-1 w-full border border-hairline bg-ivory px-3 py-2" />
+          <label className="block text-sm text-ink-soft dark:text-dark-ink/70">Email</label>
+          <input name="email" type="email" className="mt-1 w-full border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-3 py-2" />
         </div>
       </div>
-      <p className="text-xs text-ink/50">
+      <p className="text-xs text-ink-soft dark:text-dark-ink/50">
         This just records the judge. Use &quot;Invite&quot; afterward to send them an account.
       </p>
       {error && <p className="text-sm text-brick">{error}</p>}
       <div className="flex gap-3">
-        <button type="submit" disabled={loading} className="border border-emerald bg-emerald px-4 py-2 text-sm text-ivory hover:bg-emerald-dark disabled:opacity-50">
+        <button type="submit" disabled={loading} className="border border-forest bg-forest px-4 py-2 text-sm text-white hover:bg-forest-dark disabled:opacity-50">
           {loading ? "Creating…" : "Create"}
         </button>
-        <button type="button" onClick={() => setOpen(false)} className="px-4 py-2 text-sm text-ink/60">
+        <button type="button" onClick={() => setOpen(false)} className="px-4 py-2 text-sm text-ink-soft dark:text-dark-ink/60">
           Cancel
         </button>
       </div>
@@ -108,10 +108,10 @@ export function InviteJudgeButton({ judgeId, defaultEmail }: { judgeId: string; 
   if (!editing) {
     return (
       <div className="flex items-center gap-2">
-        <button onClick={() => setEditing(true)} className="border border-ink/30 px-3 py-1.5 text-xs text-ink/70 hover:border-ink hover:text-ink">
+        <button onClick={() => setEditing(true)} className="border border-hairline dark:border-dark-hairline px-3 py-1.5 text-xs text-ink-soft dark:text-dark-ink/70 hover:border-ink hover:text-ink dark:text-dark-ink">
           Invite
         </button>
-        {message && <span className="text-xs text-ink/50">{message}</span>}
+        {message && <span className="text-xs text-ink-soft dark:text-dark-ink/50">{message}</span>}
       </div>
     );
   }
@@ -123,9 +123,9 @@ export function InviteJudgeButton({ judgeId, defaultEmail }: { judgeId: string; 
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="email@example.com"
-        className="w-48 border border-hairline bg-ivory px-2 py-1 text-xs"
+        className="w-48 border border-hairline dark:border-dark-hairline bg-surface dark:bg-dark-surface-alt px-2 py-1 text-xs"
       />
-      <button onClick={sendInvite} disabled={loading} className="border border-emerald px-3 py-1.5 text-xs text-emerald hover:bg-emerald hover:text-ivory disabled:opacity-50">
+      <button onClick={sendInvite} disabled={loading} className="border border-forest px-3 py-1.5 text-xs text-forest dark:text-forest-light hover:bg-forest hover:text-white disabled:opacity-50">
         {loading ? "Sending…" : "Send"}
       </button>
     </div>

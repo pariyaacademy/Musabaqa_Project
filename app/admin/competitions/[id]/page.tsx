@@ -45,13 +45,13 @@ export default async function AdminCompetitionDetailPage({ params }: { params: {
   return (
     <div>
       <StatusControl competitionId={competition.id} currentStatus={competition.status} />
-      <h1 className="mt-2 font-display text-3xl text-ink">{competition.name}</h1>
+      <h1 className="mt-2 font-display text-3xl text-ink dark:text-dark-ink">{competition.name}</h1>
 
       <div className="star-divider my-8" />
 
       <div className="flex items-center justify-between">
-        <h2 className="font-display text-2xl text-ink">Categories</h2>
-        <Link href={`/admin/competitions/${competition.id}/schedule`} className="text-sm text-emerald hover:text-ink">
+        <h2 className="font-display text-2xl text-ink dark:text-dark-ink">Categories</h2>
+        <Link href={`/admin/competitions/${competition.id}/schedule`} className="text-sm text-forest dark:text-forest-light hover:text-ink dark:text-dark-ink">
           View full schedule →
         </Link>
       </div>
@@ -59,18 +59,18 @@ export default async function AdminCompetitionDetailPage({ params }: { params: {
         <NewCategoryForm competitionId={competition.id} />
       </div>
       {categories.length > 0 && (
-        <ul className="mt-6 divide-y divide-hairline border-t border-hairline">
+        <ul className="mt-6 divide-y divide-hairline dark:divide-dark-hairline border-t border-hairline dark:border-dark-hairline">
           {categories.map((c) => (
             <li key={c.id} className="flex items-center justify-between py-3">
               <div>
-                <Link href={`/admin/competitions/${competition.id}/categories/${c.id}`} className="text-ink hover:text-emerald">
+                <Link href={`/admin/competitions/${competition.id}/categories/${c.id}`} className="text-ink dark:text-dark-ink hover:text-forest dark:text-forest-light">
                   {c.category_name}
                 </Link>
-                <p className="text-xs text-ink/50">
+                <p className="text-xs text-ink-soft dark:text-dark-ink/50">
                   {c.start_juz && c.end_juz ? `Juz ${c.start_juz}–${c.end_juz}` : "No range set"}
                 </p>
               </div>
-              <span className="text-xs uppercase tracking-wide text-ink/50">{c.status}</span>
+              <span className="text-xs uppercase tracking-wide text-ink-soft dark:text-dark-ink/50">{c.status}</span>
             </li>
           ))}
         </ul>
@@ -78,19 +78,19 @@ export default async function AdminCompetitionDetailPage({ params }: { params: {
 
       <div className="star-divider my-8" />
 
-      <h2 className="font-display text-2xl text-ink">Pending registrations</h2>
+      <h2 className="font-display text-2xl text-ink dark:text-dark-ink">Pending registrations</h2>
       {pendingParticipants.length === 0 ? (
-        <p className="mt-4 text-ink/60">No registrations waiting for approval.</p>
+        <p className="mt-4 text-ink-soft dark:text-dark-ink/60">No registrations waiting for approval.</p>
       ) : (
-        <ul className="mt-6 divide-y divide-hairline border-t border-hairline">
+        <ul className="mt-6 divide-y divide-hairline dark:divide-dark-hairline border-t border-hairline dark:border-dark-hairline">
           {pendingParticipants.map((pc) => {
             const p = Array.isArray(pc.participants) ? pc.participants[0] : pc.participants;
             const cat = Array.isArray(pc.competition_categories) ? pc.competition_categories[0] : pc.competition_categories;
             return (
               <li key={pc.id} className="flex items-center justify-between py-3">
                 <div>
-                  <p className="text-ink">{p?.full_name}</p>
-                  <p className="tabnum text-xs text-ink/50">
+                  <p className="text-ink dark:text-dark-ink">{p?.full_name}</p>
+                  <p className="tabnum text-xs text-ink-soft dark:text-dark-ink/50">
                     {p?.participant_code} · {cat?.category_name}
                   </p>
                 </div>
@@ -103,8 +103,8 @@ export default async function AdminCompetitionDetailPage({ params }: { params: {
 
       <div className="star-divider my-8" />
 
-      <h2 className="font-display text-2xl text-ink">Administrators</h2>
-      <p className="mt-2 text-sm text-ink/60">
+      <h2 className="font-display text-2xl text-ink dark:text-dark-ink">Administrators</h2>
+      <p className="mt-2 text-sm text-ink-soft dark:text-dark-ink/60">
         Add someone as an admin of this specific competition. If they don&apos;t have an account yet,
         they&apos;ll get an invite email.
       </p>
